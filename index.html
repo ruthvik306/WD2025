@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Your Name</title>
     <style>
-        /* Background with gradient */
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to bottom, #fbe7f6, #e0aaff);
@@ -17,7 +16,6 @@
             height: 100vh;
         }
 
-        /* Card container */
         .profile-container {
             background: white;
             padding: 25px;
@@ -29,7 +27,6 @@
             position: relative;
         }
 
-        /* Women's Day Banner */
         .banner {
             background: #d63384;
             color: white;
@@ -57,7 +54,6 @@
             line-height: 1.6;
         }
 
-        /* Input and Button Styling */
         .input-container {
             margin-top: 20px;
         }
@@ -91,19 +87,20 @@
 <body>
     <div class="profile-container">
         
-        <!-- Name Input Section -->
         <div id="input-section" class="input-container">
             <h1>Enter Your Name</h1>
             <input type="text" id="nameInput" placeholder="Your name">
             <button onclick="showMessage()">Submit</button>
         </div>
 
-        <!-- Women's Day Message Section (Initially Hidden) -->
         <div id="message-section" style="display: none;">
             <div class="banner">🌸 Happy Women's Day! 💜</div>
             <h1 id="name"></h1>
+            <h3>Message</h3>
             <p id="message"></p>
         </div>
+
+        <audio id="song" src="WD.mp3"></audio>
     </div>
 
     <script>
@@ -111,7 +108,6 @@
             let name = document.getElementById("nameInput").value.trim();
 
             if (name !== "") {
-                // List of 10 different Women's Day messages
                 const messages = [
                     "You are powerful, courageous, and unstoppable. Shine on! ✨",
                     "May you always find the strength to chase your dreams. 🌸",
@@ -125,16 +121,15 @@
                     "May this day remind you of your greatness and power. 🚀"
                 ];
 
-                // Select a random message
                 const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-                // Hide input section, show message section
                 document.getElementById("input-section").style.display = "none";
                 document.getElementById("message-section").style.display = "block";
 
-                // Display personalized name and message
                 document.getElementById("name").textContent = `Dear ${name},`;
                 document.getElementById("message").textContent = randomMessage;
+
+                document.getElementById("song").play();
             } else {
                 alert("Please enter your name!");
             }
