@@ -100,8 +100,7 @@
             <p id="message"></p>
         </div>
 
-        <!-- Audio Player (Now Visible for Testing) -->
-        <audio id="song" src="music/WD.mp3" controls></audio>
+        <audio id="song" src="music/WD.mp3" style="display: none;"></audio>
     </div>
 
     <script>
@@ -131,7 +130,6 @@
                 document.getElementById("name").textContent = `Dear ${name},`;
                 document.getElementById("message").textContent = randomMessage;
 
-                // Enable and play the song
                 audio.muted = false;
                 audio.play().catch(error => console.log("Autoplay error:", error));
             } else {
