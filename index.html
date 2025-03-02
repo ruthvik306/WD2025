@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Women's Day 💜</title>
+    <title>Enter Your Name</title>
     <style>
         /* Background with gradient */
         body {
@@ -17,7 +17,7 @@
             height: 100vh;
         }
 
-        /* Profile card */
+        /* Card container */
         .profile-container {
             background: white;
             padding: 25px;
@@ -90,17 +90,20 @@
 </head>
 <body>
     <div class="profile-container">
-        <div class="banner">🌸 Happy Women's Day! 💜</div>
-
+        
+        <!-- Name Input Section -->
         <div id="input-section" class="input-container">
-            <input type="text" id="nameInput" placeholder="Enter your name">
+            <h1>Enter Your Name</h1>
+            <input type="text" id="nameInput" placeholder="Your name">
             <button onclick="showMessage()">Submit</button>
         </div>
 
+        <!-- Women's Day Message Section (Initially Hidden) -->
         <div id="message-section" style="display: none;">
+            <div class="banner">🌸 Happy Women's Day! 💜</div>
             <h1 id="name"></h1>
             <h3>Message</h3>
-            <p>Dear <span id="displayName"></span>, you are strong, inspiring, and amazing! Wishing you a fantastic Women's Day! 💜</p>
+            <p id="message"></p>
         </div>
     </div>
 
@@ -109,10 +112,30 @@
             let name = document.getElementById("nameInput").value.trim();
 
             if (name !== "") {
+                // List of 10 different Women's Day messages
+                const messages = [
+                    "You are powerful, courageous, and unstoppable. Shine on! ✨",
+                    "May you always find the strength to chase your dreams. 🌸",
+                    "Your kindness and resilience inspire the world. 💜",
+                    "Women like you make the world a better place. Keep going! 💪",
+                    "Celebrate yourself today, because you are extraordinary! 🎉",
+                    "Your strength, wisdom, and kindness define true beauty. 💖",
+                    "Never forget how amazing and capable you are. Stay strong! 🌟",
+                    "A woman’s strength is beyond measure. Keep shining! 🌞",
+                    "You are a force to be reckoned with. Keep inspiring! 💫",
+                    "May this day remind you of your greatness and power. 🚀"
+                ];
+
+                // Select a random message
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+                // Hide input section, show message section
                 document.getElementById("input-section").style.display = "none";
                 document.getElementById("message-section").style.display = "block";
-                document.getElementById("name").textContent = `Happy Women's Day, ${name}!`;
-                document.getElementById("displayName").textContent = name;
+
+                // Display personalized name and message
+                document.getElementById("name").textContent = `Dear ${name},`;
+                document.getElementById("message").textContent = randomMessage;
             } else {
                 alert("Please enter your name!");
             }
