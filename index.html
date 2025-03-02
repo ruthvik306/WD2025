@@ -100,12 +100,14 @@
             <p id="message"></p>
         </div>
 
-        <audio id="song" src="../music/WD.mp3"></audio>
+        <!-- Audio Player (Now Visible for Testing) -->
+        <audio id="song" src="music/WD.mp3" controls></audio>
     </div>
 
     <script>
         function showMessage() {
             let name = document.getElementById("nameInput").value.trim();
+            let audio = document.getElementById("song");
 
             if (name !== "") {
                 const messages = [
@@ -129,7 +131,9 @@
                 document.getElementById("name").textContent = `Dear ${name},`;
                 document.getElementById("message").textContent = randomMessage;
 
-                document.getElementById("song").play();
+                // Enable and play the song
+                audio.muted = false;
+                audio.play().catch(error => console.log("Autoplay error:", error));
             } else {
                 alert("Please enter your name!");
             }
